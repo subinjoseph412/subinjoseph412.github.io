@@ -1691,3 +1691,20 @@ body::before {
     bottom: 16px;
   }
 }
+
+.chatbot-header { position: relative; }
+.chatbot-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+  transition: background 0.2s;
+}
+.chatbot-close-btn:hover {
+  background: rgba(255,255,255,0.12);
+}
