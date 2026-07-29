@@ -80,7 +80,7 @@
 
     <div id="chatbotWindow" class="chatbot-window">
       <div class="chatbot-header">
-        <div class="chatbot-header-avatar"><img src="assets/profile.jpg" alt="Subin Joseph" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"></div>
+        <div class="chatbot-header-avatar"><img src="${window.location.pathname.includes('/pages/') ? '../' : ''}assets/profile.jpg" alt="Subin Joseph" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"></div>
         <button id="chatbotClose" class="chatbot-close-btn" aria-label="Close chat">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </button>
