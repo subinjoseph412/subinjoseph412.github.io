@@ -16,7 +16,7 @@
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo" aria-label="Subin Joseph — Home">
-        <img src="assets/profile.jpg" alt="Subin Joseph" class="logo-mark" style="object-fit:cover;">
+        <img src="/assets/profile.jpg" alt="Subin Joseph" class="logo-mark" style="object-fit:cover;">
         <span class="logo-name">Subin Joseph</span>
       </a>
 
