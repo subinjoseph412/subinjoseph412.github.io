@@ -1,0 +1,84 @@
+/* ============================================================
+   ONAM SEASONAL STYLES
+   TO REMOVE: delete this file's <link> tag from all HTML files,
+   or simply delete this file (css/onam.css)
+   ============================================================ */
+
+#onamPetals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9000;
+  overflow: hidden;
+}
+
+.onam-petal {
+  position: absolute;
+  top: -20px;
+  border-radius: 50% 0 50% 50%;
+  opacity: 0.75;
+  animation-name: onam-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 0 4px rgba(168,85,247,0.3));
+}
+
+@keyframes onam-fall {
+  0% {
+    transform: translateY(-5vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 0.75; }
+  90% { opacity: 0.6; }
+  100% {
+    transform: translateY(105vh) translateX(var(--sway)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+#onamBanner {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 9001;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 100px;
+  background: rgba(124, 58, 237, 0.12);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.2);
+  transition: opacity 0.3s, transform 0.3s;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e9d5ff;
+}
+
+.onam-banner-emoji { font-size: 16px; }
+.onam-banner-text { white-space: nowrap; }
+
+#onamBanner button {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 2px 4px;
+  margin-left: 4px;
+  transition: color 0.2s;
+}
+
+#onamBanner button:hover { color: #fff; }
+
+@media (max-width: 600px) {
+  #onamBanner {
+    top: auto;
+    bottom: 90px;
+    right: 16px;
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}

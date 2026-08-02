@@ -4,48 +4,27 @@
 
 (function () {
 
-  // ── FAQ Database ─────────────────────────────────────────
   const FAQS = [
-    {
-      keywords: ['service', 'services', 'offer', 'do you edit', 'what do you do'],
-      answer: "I offer video editing, color grading, sound design, motion graphics, subtitles/captions, and thumbnail design. Check the <a href='pages/services.html'>Services page</a> for details!"
-    },
-    {
-      keywords: ['price', 'pricing', 'cost', 'rate', 'charge', 'how much'],
-      answer: "Pricing depends on your project's length and complexity — I don't use a fixed rate card. <a href='pages/contact.html'>Get in touch</a> and I'll give you a fair, transparent quote."
-    },
-    {
-      keywords: ['contact', 'email', 'reach', 'get in touch', 'hire'],
-      answer: "You can reach me via email on the <a href='pages/contact.html'>Contact page</a> — I usually reply within 24 hours."
-    },
-    {
-      keywords: ['portfolio', 'work', 'examples', 'sample', 'showreel'],
-      answer: "Check out my <a href='pages/portfolio.html'>Portfolio page</a> to see recent work, including my Smartwatch UI Concept piece."
-    },
-    {
-      keywords: ['tool', 'software', 'editing', 'davinci', 'resolve', 'premiere'],
-      answer: "I edit using DaVinci Resolve — great for both editing and professional color grading."
-    },
-    {
-      keywords: ['turnaround', 'time', 'long', 'deadline', 'how fast', 'delivery'],
-      answer: "Turnaround depends on the project — short-form content can be done in 1-2 days, longer videos take more time. Let's discuss your timeline on the <a href='pages/contact.html'>Contact page</a>."
-    },
-    {
-      keywords: ['worldwide', 'location', 'where', 'based', 'kerala', 'india', 'remote'],
-      answer: "I'm based in Trivandrum, Kerala, India — but I work with clients worldwide, fully remote."
-    },
-    {
-      keywords: ['revision', 'changes', 'edit again'],
-      answer: "I'm happy to make revisions to get your video just right. Feel free to discuss specifics when we talk about your project."
-    },
-    {
-      keywords: ['hello', 'hi', 'hey', 'sup'],
-      answer: "Hey there! 👋 I'm Subin's assistant. Ask me about services, pricing, turnaround time, or how to get in touch!"
-    },
-    {
-      keywords: ['thank', 'thanks', 'thank you'],
-      answer: "You're welcome! Feel free to ask anything else, or head to the <a href='pages/contact.html'>Contact page</a> to start a project. 🎬"
-    }
+    { keywords: ['service', 'services', 'offer', 'do you edit', 'what do you do'],
+      answer: "I offer video editing, color grading, sound design, motion graphics, subtitles/captions, and thumbnail design. Check the <a href='pages/services.html'>Services page</a> for details!" },
+    { keywords: ['price', 'pricing', 'cost', 'rate', 'charge', 'how much'],
+      answer: "Pricing depends on your project's length and complexity — I don't use a fixed rate card. <a href='pages/contact.html'>Get in touch</a> and I'll give you a fair, transparent quote." },
+    { keywords: ['contact', 'email', 'reach', 'get in touch', 'hire'],
+      answer: "You can reach me via email on the <a href='pages/contact.html'>Contact page</a> — I usually reply within 24 hours." },
+    { keywords: ['portfolio', 'work', 'examples', 'sample', 'showreel'],
+      answer: "Check out my <a href='pages/portfolio.html'>Portfolio page</a> to see recent work, including my Smartwatch UI Concept piece." },
+    { keywords: ['tool', 'software', 'editing', 'davinci', 'resolve', 'premiere'],
+      answer: "I edit using DaVinci Resolve — great for both editing and professional color grading." },
+    { keywords: ['turnaround', 'time', 'long', 'deadline', 'how fast', 'delivery'],
+      answer: "Turnaround depends on the project — short-form content can be done in 1-2 days, longer videos take more time. Let's discuss your timeline on the <a href='pages/contact.html'>Contact page</a>." },
+    { keywords: ['worldwide', 'location', 'where', 'based', 'kerala', 'india', 'remote'],
+      answer: "I'm based in Trivandrum, Kerala, India — but I work with clients worldwide, fully remote." },
+    { keywords: ['revision', 'changes', 'edit again'],
+      answer: "I'm happy to make revisions to get your video just right. Feel free to discuss specifics when we talk about your project." },
+    { keywords: ['hello', 'hi', 'hey', 'sup'],
+      answer: "Hey there! 👋 I'm Subin's assistant. Ask me about services, pricing, turnaround time, or how to get in touch!" },
+    { keywords: ['thank', 'thanks', 'thank you'],
+      answer: "You're welcome! Feel free to ask anything else, or head to the <a href='pages/contact.html'>Contact page</a> to start a project. 🎬" }
   ];
 
   const DEFAULT_ANSWER = "I'm a simple FAQ bot, so I might not have that answer! Try asking about services, pricing, turnaround time, or how to get in touch — or just email Subin directly on the <a href='pages/contact.html'>Contact page</a>.";
@@ -60,14 +39,15 @@
   function findAnswer(query) {
     const lower = query.toLowerCase();
     for (const faq of FAQS) {
-      if (faq.keywords.some(kw => lower.includes(kw))) {
-        return faq.answer;
-      }
+      if (faq.keywords.some(kw => lower.includes(kw))) return faq.answer;
     }
     return DEFAULT_ANSWER;
   }
 
-  // ── Build chatbot HTML ───────────────────────────────────
+  // Detect whether we're on a subpage (inside /pages/) for correct relative paths
+  const inSubpage = window.location.pathname.includes('/pages/');
+  const avatarPath = (inSubpage ? '../' : '') + 'assets/profile.jpg';
+
   const chatbotHTML = `
     <div id="chatbotBubble" class="chatbot-bubble" aria-label="Open chat">
       <svg class="chatbot-icon-open" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -80,23 +60,23 @@
 
     <div id="chatbotWindow" class="chatbot-window">
       <div class="chatbot-header">
-        <div class="chatbot-header-avatar"><img src="${window.location.pathname.includes('/pages/') ? '../' : ''}assets/profile.jpg" alt="Subin Joseph" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"></div>
-        <button id="chatbotClose" class="chatbot-close-btn" aria-label="Close chat">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
+        <div class="chatbot-header-avatar"><img src="${avatarPath}" alt="Subin Joseph" style="width:100%;height:100%;object-fit:cover;border-radius:10px;"></div>
         <div>
           <div class="chatbot-header-title">Subin's Assistant</div>
           <div class="chatbot-header-sub">
             <span class="chatbot-status-dot"></span> Usually replies instantly
           </div>
         </div>
+        <button id="chatbotClose" class="chatbot-close-btn" aria-label="Close chat">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
       </div>
 
       <div class="chatbot-messages" id="chatbotMessages">
-        <div class="chatbot-msg chatbot-msg-bot">
+        <div class="chatbot-msg chatbot-msg-bot" id="chatbotGreeting" style="display:none;">
           Hi! 👋 I'm a quick FAQ assistant. Ask me about services, pricing, or how to reach Subin!
         </div>
-        <div class="chatbot-suggestions" id="chatbotSuggestions"></div>
+        <div class="chatbot-suggestions" id="chatbotSuggestions" style="display:none;"></div>
       </div>
 
       <div class="chatbot-input-row">
@@ -110,7 +90,6 @@
 
   document.body.insertAdjacentHTML('beforeend', chatbotHTML);
 
-  // ── Elements ──────────────────────────────────────────────
   const bubble = document.getElementById('chatbotBubble');
   const win = document.getElementById('chatbotWindow');
   const messages = document.getElementById('chatbotMessages');
@@ -120,19 +99,17 @@
   const iconOpen = bubble.querySelector('.chatbot-icon-open');
   const iconClose = bubble.querySelector('.chatbot-icon-close');
 
-  // Populate suggestions
   SUGGESTED_QUESTIONS.forEach(q => {
     const chip = document.createElement('button');
     chip.className = 'chatbot-suggestion-chip';
     chip.textContent = q;
-    chip.addEventListener('click', () => {
-      sendMessage(q);
-    });
+    chip.addEventListener('click', () => sendMessage(q));
     suggestionsEl.appendChild(chip);
   });
 
-  // ── Toggle open/close ─────────────────────────────────────
   let isOpen = false;
+  let hasGreeted = false;
+
   document.getElementById('chatbotClose').addEventListener('click', () => {
     isOpen = false;
     win.classList.remove('open');
@@ -145,10 +122,20 @@
     win.classList.toggle('open', isOpen);
     iconOpen.style.display = isOpen ? 'none' : 'block';
     iconClose.style.display = isOpen ? 'block' : 'none';
-    if (isOpen) input.focus();
+    if (isOpen) {
+      input.focus();
+      if (!hasGreeted) {
+        hasGreeted = true;
+        showTyping();
+        setTimeout(() => {
+          removeTyping();
+          document.getElementById('chatbotGreeting').style.display = 'block';
+          document.getElementById('chatbotSuggestions').style.display = 'flex';
+        }, 700 + Math.random() * 400);
+      }
+    }
   });
 
-  // ── Send message logic ────────────────────────────────────
   function addMessage(text, sender) {
     const msg = document.createElement('div');
     msg.className = `chatbot-msg chatbot-msg-${sender}`;
@@ -178,7 +165,6 @@
     addMessage(query, 'user');
     input.value = '';
 
-    // Hide suggestions after first message
     if (suggestionsEl) suggestionsEl.style.display = 'none';
 
     showTyping();
