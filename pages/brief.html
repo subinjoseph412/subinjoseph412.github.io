@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tell Subin Joseph about your video project — a quick guided form that generates a clean brief for your first email." />
+  <title>Project Brief — Subin Joseph</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237c3aed'/><text y='.9em' font-size='65' x='50%25' text-anchor='middle' font-family='system-ui' font-weight='900' fill='white'>SJ</text></svg>" />
+  <style>
+    .brief-wrap { max-width: 680px; margin: 0 auto; }
+
+    .brief-step { display: none; }
+    .brief-step.active { display: block; }
+
+    .brief-progress {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 40px;
+    }
+    .brief-progress-dot {
+      flex: 1;
+      height: 4px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.08);
+      transition: background 0.3s;
+    }
+    .brief-progress-dot.done { background: var(--purple-light); }
+
+    .brief-q-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+      margin-bottom: 12px;
+    }
+    .brief-q-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      margin-bottom: 28px;
+      line-height: 1.25;
+    }
+
+    .brief-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .brief-option {
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .brief-option:hover { background: rgba(255,255,255,0.08); }
+    .brief-option.selected {
+      background: rgba(124,58,237,0.18);
+      border-color: rgba(124,58,237,0.4);
+      color: var(--purple-light);
+    }
+
+    .brief-textarea, .brief-text-input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 15px;
+      color: var(--text);
+      font-family: inherit;
+      margin-bottom: 32px;
+      resize: vertical;
+    }
+    .brief-textarea:focus, .brief-text-input:focus { outline: none; border-color: rgba(124,58,237,0.4); }
+    .brief-textarea::placeholder, .brief-text-input::placeholder { color: var(--text-dim); }
+
+    .brief-nav {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brief-summary-card {
+      padding: 28px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .brief-summary-row {
+      display: flex;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .brief-summary-row:last-child { border-bottom: none; }
+    .brief-summary-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-dim);
+      min-width: 110px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding-top: 2px;
+    }
+    .brief-summary-value {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .brief-copy-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+      white-space: pre-wrap;
+      font-family: 'Courier New', monospace;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.nav-logo').forEach(el => el.href = '../index.html');
+    document.querySelectorAll('.nav-link[data-page], .nav-cta[data-page]').forEach(el => {
+      const page = el.dataset.page;
+      el.href = page === 'index.html' ? '../index.html' : page;
+    });
+  });
+</script>
+<script src="../js/layout.js"></script>
+
+<main class="page-main">
+  <div class="container">
+    <div class="page-hero">
+      <div class="section-eyebrow fade-in">Project brief</div>
+      <h1 class="display-lg fade-in fade-in-delay-1">
+        Let's talk<br><span class="grad-text">project details.</span>
+      </h1>
+      <p class="text-muted fade-in fade-in-delay-2" style="margin-top:16px; max-width:480px; font-size:16px; line-height:1.75;">
+        A few quick questions — takes under a minute, and gives me everything I need for a fast, accurate quote.
+      </p>
+    </div>
+
+    <div class="brief-wrap fade-in fade-in-delay-2">
+
+      <div class="brief-progress" id="briefProgress"></div>
+
+      <!-- Step 1: Project type -->
+      <div class="brief-step active" data-step="0">
+        <div class="brief-q-label">Step 1 of 5</div>
+        <div class="brief-q-title">What type of video is this?</div>
+        <div class="brief-options" data-field="type">
+          <div class="brief-option">YouTube long-form</div>
+          <div class="brief-option">Short-form / Reel</div>
+          <div class="brief-option">Corporate / Brand</div>
+          <div class="brief-option">Documentary</div>
+          <div class="brief-option">Podcast</div>
+          <div class="brief-option">Music video</div>
+        </div>
+      </div>
+
+      <!-- Step 2: Footage -->
+      <div class="brief-step" data-step="1">
+        <div class="brief-q-label">Step 2 of 5</div>
+        <div class="brief-q-title">Tell me about the footage.</div>
+        <textarea class="brief-textarea" data-field="footage" rows="4" placeholder="e.g. About 45 minutes of raw 4K footage, shot on iPhone, one location..."></textarea>
+      </div>
+
+      <!-- Step 3: Deadline -->
+      <div class="brief-step" data-step="2">
+        <div class="brief-q-label">Step 3 of 5</div>
+        <div class="brief-q-title">What's your timeline?</div>
+        <div class="brief-options" data-field="deadline">
+          <div class="brief-option">ASAP / within a few days</div>
+          <div class="brief-option">Within 1-2 weeks</div>
+          <div class="brief-option">Flexible / no rush</div>
+          <div class="brief-option">Specific date</div>
+        </div>
+        <textarea class="brief-textarea" data-field="deadline_note" rows="2" placeholder="Optional: specific date or extra detail"></textarea>
+      </div>
+
+      <!-- Step 4: References -->
+      <div class="brief-step" data-step="3">
+        <div class="brief-q-label">Step 4 of 5</div>
+        <div class="brief-q-title">Any style references?</div>
+        <textarea class="brief-textarea" data-field="references" rows="4" placeholder="e.g. Link to a video you love the pacing of, or 'fast cuts like MrBeast'..."></textarea>
+      </div>
+
+      <!-- Step 5: Delivery -->
+      <div class="brief-step" data-step="4">
+        <div class="brief-q-label">Step 5 of 5</div>
+        <div class="brief-q-title">How will you share footage, and how should I reach you?</div>
+        <div class="brief-options" data-field="delivery">
+          <div class="brief-option">Google Drive</div>
+          <div class="brief-option">WeTransfer</div>
+          <div class="brief-option">Dropbox</div>
+          <div class="brief-option">Not decided yet</div>
+        </div>
+        <input type="text" class="brief-text-input" data-field="contact_name" placeholder="Your name">
+        <input type="text" class="brief-text-input" data-field="contact_email" placeholder="Your email (so I can reply)">
+      </div>
+
+      <!-- Summary -->
+      <div class="brief-step" data-step="5">
+        <div class="brief-q-label">All set</div>
+        <div class="brief-q-title">Here's your brief.</div>
+
+        <div class="brief-summary-card glass" id="briefSummaryCard"></div>
+
+        <div class="brief-q-label" style="margin-top:32px;">Copy this for your email</div>
+        <div class="brief-copy-box" id="briefCopyText"></div>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <button class="btn btn-primary" id="briefCopyBtn">
+            📋 Copy brief
+          </button>
+          <a href="#" class="btn btn-glass" id="briefMailtoBtn">
+            ✉️ Open in email
+          </a>
+        </div>
+      </div>
+
+      <div class="brief-nav fade-in" id="briefNav">
+        <button class="btn btn-glass" id="briefBackBtn" style="visibility:hidden;">← Back</button>
+        <button class="btn btn-primary" id="briefNextBtn">Next →</button>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script src="../js/main.js"></script>
+<script src="../js/brief.js"></script>
+</body>
+</html>
