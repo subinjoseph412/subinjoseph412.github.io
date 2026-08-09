@@ -1202,7 +1202,7 @@ body::before {
 }
 
 @media (max-width: 768px) {
-  .nav-links, .nav-cta { display: none; }
+  .nav-links, .nav-cta, .nav-social { display: none; }
   .nav-hamburger { display: flex; }
   .services-grid { grid-template-columns: 1fr; }
   .portfolio-grid { grid-template-columns: 1fr; }
