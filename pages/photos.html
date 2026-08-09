@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Photography by Subin Joseph." />
+  <title>Photos — Subin Joseph</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237c3aed'/><text y='.9em' font-size='65' x='50%25' text-anchor='middle' font-family='system-ui' font-weight='900' fill='white'>SJ</text></svg>" />
+</head>
+<body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.nav-logo').forEach(el => {
+      el.href = '../index.html';
+    });
+    document.querySelectorAll('.nav-link[data-page], .nav-cta[data-page]').forEach(el => {
+      const page = el.dataset.page;
+      if (page === 'index.html') el.href = '../index.html';
+      else el.href = page;
+    });
+    document.querySelectorAll('.footer-link').forEach(el => {
+      if (el.href && el.href.includes('pages/contact')) {
+        el.href = 'contact.html';
+      }
+    });
+  });
+</script>
+<script src="../js/layout.js"></script>
+
+<main class="page-main">
+  <div class="container">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <div class="section-eyebrow fade-in">My work</div>
+      <h1 class="display-lg fade-in fade-in-delay-1">Photos</h1>
+      <p class="text-muted fade-in fade-in-delay-2" style="margin-top:16px; max-width:520px; font-size:16px; line-height:1.75;">
+        A collection of photography — moments, places, and light.
+      </p>
+    </div>
+
+    <!-- Photos Grid -->
+    <div class="portfolio-grid" id="photosGrid">
+
+      <div class="portfolio-empty glass fade-in" style="grid-column:1/-1;">
+        <div style="font-size:56px; margin-bottom:16px;">📷</div>
+        <h3 style="font-family:var(--font-display); font-size:22px; font-weight:700; margin-bottom:12px;">Photos coming soon</h3>
+        <p>New photography being added — <a href="contact.html" style="color:var(--purple-light); font-weight:600;">send me a message</a> if you'd like to see more.</p>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<script src="../js/main.js"></script>
+
+</body>
+</html>
