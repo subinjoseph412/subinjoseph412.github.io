@@ -231,6 +231,14 @@ body::before {
   justify-content: center;
   color: var(--text-muted);
   transition: color 0.2s;
+  margin: 0 6px;
+}
+
+.nav-mobile-social {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 12px 0;
 }
 
 .nav-social:hover {
