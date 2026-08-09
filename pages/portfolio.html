@@ -126,6 +126,9 @@
           <div class="play-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </div>
+          <div class="fullscreen-btn" onclick="event.stopPropagation(); this.closest('.portfolio-thumb').querySelector('video').requestFullscreen();">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/></svg>
+          </div>
         </div>
       </div>
     </div>
@@ -135,6 +138,9 @@
         <div class="portfolio-overlay">
           <div class="play-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <div class="fullscreen-btn" onclick="event.stopPropagation(); this.closest('.portfolio-thumb').querySelector('video').requestFullscreen();">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/></svg>
           </div>
         </div>
       </div>
@@ -146,6 +152,9 @@
           <div class="play-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
           </div>
+          <div class="fullscreen-btn" onclick="event.stopPropagation(); this.closest('.portfolio-thumb').querySelector('video').requestFullscreen();">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/></svg>
+          </div>
         </div>
     <div class="portfolio-card glass fade-in" data-category="documentary">
       <div class="portfolio-thumb">
@@ -153,6 +162,9 @@
         <div class="portfolio-overlay">
           <div class="play-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </div>
+          <div class="fullscreen-btn" onclick="event.stopPropagation(); this.closest('.portfolio-thumb').querySelector('video').requestFullscreen();">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/></svg>
           </div>
         </div>
       </div>
@@ -192,6 +204,24 @@
         }
       });
     });
+  });
+</script>
+
+<script>
+  // Click-to-play for portfolio video thumbnails
+  document.querySelectorAll('.portfolio-thumb').forEach(thumb => {
+    const video = thumb.querySelector('video');
+    if (!video) return;
+    thumb.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        thumb.classList.add('playing');
+      } else {
+        video.pause();
+        thumb.classList.remove('playing');
+      }
+    });
+    video.addEventListener('ended', () => thumb.classList.remove('playing'));
   });
 </script>
 </body>
