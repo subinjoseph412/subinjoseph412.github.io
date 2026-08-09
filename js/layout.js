@@ -23,6 +23,7 @@
       <div class="nav-links" role="list">
         <a href="index.html"        class="nav-link" data-page="index.html"     role="listitem">Home</a>
         <a href="pages/portfolio.html" class="nav-link" data-page="portfolio.html" role="listitem">Portfolio</a>
+        <a href="pages/photos.html"    class="nav-link" data-page="photos.html"    role="listitem">Photos</a>
         <a href="pages/services.html"  class="nav-link" data-page="services.html"  role="listitem">Services</a>
         <a href="pages/about.html"     class="nav-link" data-page="about.html"     role="listitem">About</a>
         <a href="pages/contact.html"   class="nav-cta"  data-page="contact.html">Let's work together</a>
@@ -37,6 +38,7 @@
   <div class="nav-mobile" id="mobileMenu" role="dialog" aria-label="Mobile menu">
     <a href="index.html"           class="nav-link" data-page="index.html">Home</a>
     <a href="pages/portfolio.html" class="nav-link" data-page="portfolio.html">Portfolio</a>
+    <a href="pages/photos.html"    class="nav-link" data-page="photos.html">Photos</a>
     <a href="pages/services.html"  class="nav-link" data-page="services.html">Services</a>
     <a href="pages/about.html"     class="nav-link" data-page="about.html">About</a>
     <a href="pages/contact.html"   class="nav-cta"  data-page="contact.html">Let's work together</a>
