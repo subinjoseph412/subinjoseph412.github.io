@@ -32,14 +32,6 @@
         <a href="https://linkedin.com/in/subin-joseph-2b9b70258" class="nav-social" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <div class="nav-mobile-social">
-      <a href="https://instagram.com/bugwithabackpack" class="nav-social" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-      </a>
-      <a href="https://linkedin.com/in/subin-joseph-2b9b70258" class="nav-social" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      </a>
-    </div>
     <a href="pages/contact.html"   class="nav-cta"  data-page="contact.html">Let's work together</a>
       </div>
 
@@ -55,6 +47,14 @@
     <a href="pages/photos.html"    class="nav-link" data-page="photos.html">Photos</a>
     <a href="pages/services.html"  class="nav-link" data-page="services.html">Services</a>
     <a href="pages/about.html"     class="nav-link" data-page="about.html">About</a>
+    <div class="nav-mobile-social">
+      <a href="https://instagram.com/bugwithabackpack" class="nav-social" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/subin-joseph-2b9b70258" class="nav-social" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
     <a href="pages/contact.html"   class="nav-cta"  data-page="contact.html">Let's work together</a>
   </div>`;
 
