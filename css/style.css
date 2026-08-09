@@ -225,6 +225,18 @@ body::before {
   color: var(--purple-light);
 }
 
+.nav-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+
+.nav-social:hover {
+  color: var(--purple-light);
+}
+
 .nav-cta {
   font-size: 14px;
   font-weight: 600;
