@@ -66,8 +66,9 @@
     container.appendChild(petal);
   }
 
-  for (let i = 0; i < PETAL_COUNT; i++) {
-    createPetal();
-  }
+  // Petals disabled - banner text kept
+  // for (let i = 0; i < PETAL_COUNT; i++) {
+  //   createPetal();
+  // }
 
 })();
