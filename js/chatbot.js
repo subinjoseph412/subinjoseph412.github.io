@@ -4,19 +4,23 @@
 
 (function () {
 
+  // Detect whether we're on a subpage (inside /pages/) for correct relative paths
+  const inSubpage = window.location.pathname.includes('/pages/');
+  const pagePrefix = inSubpage ? '' : 'pages/';
+
   const FAQS = [
     { keywords: ['service', 'services', 'offer', 'do you edit', 'what do you do'],
-      answer: "I offer video editing, color grading, sound design, motion graphics, subtitles/captions, and thumbnail design. Check the <a href='pages/services.html'>Services page</a> for details!" },
+      answer: `I offer video editing, color grading, sound design, motion graphics, subtitles/captions, and thumbnail design. Check the <a href='${pagePrefix}services.html'>Services page</a> for details!` },
     { keywords: ['price', 'pricing', 'cost', 'rate', 'charge', 'how much'],
-      answer: "Pricing depends on your project's length and complexity — I don't use a fixed rate card. <a href='pages/contact.html'>Get in touch</a> and I'll give you a fair, transparent quote." },
+      answer: `Pricing depends on your project's length and complexity — I don't use a fixed rate card. <a href='${pagePrefix}contact.html'>Get in touch</a> and I'll give you a fair, transparent quote.` },
     { keywords: ['contact', 'email', 'reach', 'get in touch', 'hire'],
-      answer: "You can reach me via email on the <a href='pages/contact.html'>Contact page</a> — I usually reply within 24 hours." },
+      answer: `You can reach me via email on the <a href='${pagePrefix}contact.html'>Contact page</a> — I usually reply within 24 hours.` },
     { keywords: ['portfolio', 'work', 'examples', 'sample', 'showreel'],
-      answer: "Check out my <a href='pages/portfolio.html'>Portfolio page</a> to see recent work, including my Smartwatch UI Concept piece." },
+      answer: `Check out my <a href='${pagePrefix}portfolio.html'>Portfolio page</a> to see recent work, including my Smartwatch UI Concept piece.` },
     { keywords: ['tool', 'software', 'editing', 'davinci', 'resolve', 'premiere'],
       answer: "I edit using DaVinci Resolve — great for both editing and professional color grading." },
     { keywords: ['turnaround', 'time', 'long', 'deadline', 'how fast', 'delivery'],
-      answer: "Turnaround depends on the project — short-form content can be done in 1-2 days, longer videos take more time. Let's discuss your timeline on the <a href='pages/contact.html'>Contact page</a>." },
+      answer: `Turnaround depends on the project — short-form content can be done in 1-2 days, longer videos take more time. Let's discuss your timeline on the <a href='${pagePrefix}contact.html'>Contact page</a>.` },
     { keywords: ['worldwide', 'location', 'where', 'based', 'kerala', 'india', 'remote'],
       answer: "I'm based in Trivandrum, Kerala, India — but I work with clients worldwide, fully remote." },
     { keywords: ['revision', 'changes', 'edit again'],
@@ -24,10 +28,10 @@
     { keywords: ['hello', 'hi', 'hey', 'sup'],
       answer: "Hey there! 👋 I'm Subin's assistant. Ask me about services, pricing, turnaround time, or how to get in touch!" },
     { keywords: ['thank', 'thanks', 'thank you'],
-      answer: "You're welcome! Feel free to ask anything else, or head to the <a href='pages/contact.html'>Contact page</a> to start a project. 🎬" }
+      answer: `You're welcome! Feel free to ask anything else, or head to the <a href='${pagePrefix}contact.html'>Contact page</a> to start a project. 🎬` }
   ];
 
-  const DEFAULT_ANSWER = "I'm a simple FAQ bot, so I might not have that answer! Try asking about services, pricing, turnaround time, or how to get in touch — or just email Subin directly on the <a href='pages/contact.html'>Contact page</a>.";
+  const DEFAULT_ANSWER = `I'm a simple FAQ bot, so I might not have that answer! Try asking about services, pricing, turnaround time, or how to get in touch — or just email Subin directly on the <a href='${pagePrefix}contact.html'>Contact page</a>.`;
 
   const SUGGESTED_QUESTIONS = [
     "What services do you offer?",
@@ -44,8 +48,6 @@
     return DEFAULT_ANSWER;
   }
 
-  // Detect whether we're on a subpage (inside /pages/) for correct relative paths
-  const inSubpage = window.location.pathname.includes('/pages/');
   const avatarPath = (inSubpage ? '../' : '') + 'assets/profile.jpg';
 
   const chatbotHTML = `
@@ -136,6 +138,12 @@
     }
   });
 
+  function escapeHTML(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
   function addMessage(text, sender) {
     const msg = document.createElement('div');
     msg.className = `chatbot-msg chatbot-msg-${sender}`;
@@ -162,7 +170,7 @@
     const query = (text || input.value).trim();
     if (!query) return;
 
-    addMessage(query, 'user');
+    addMessage(escapeHTML(query), 'user');
     input.value = '';
 
     if (suggestionsEl) suggestionsEl.style.display = 'none';

@@ -10,9 +10,6 @@
   <link rel="stylesheet" href="../css/pages.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237c3aed'/><text y='.9em' font-size='65' x='50%25' text-anchor='middle' font-family='system-ui' font-weight='900' fill='white'>SJ</text></svg>" />
   <style>
-    /* Fix paths for subpage */
-    .nav-logo { href: "../index.html"; }
-    
     /* Filter tabs */
     .filter-tabs {
       display: flex;
@@ -156,6 +153,8 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M4 8V4h4M20 8V4h-4M4 16v4h4M20 16v4h-4"/></svg>
           </div>
         </div>
+      </div>
+    </div>
     <div class="portfolio-card glass fade-in" data-category="documentary">
       <div class="portfolio-thumb">
         <video src="../assets/color2.mp4" muted loop preload="metadata" playsinline></video>
@@ -169,13 +168,6 @@
         </div>
       </div>
     </div>
-      </div>
-    </div>
-          </div>
-        </div>
-        ─────────────────────────────────────────────────────
-      
-
     </div>
 
   </div>
@@ -207,22 +199,5 @@
   });
 </script>
 
-<script>
-  // Click-to-play for portfolio video thumbnails
-  document.querySelectorAll('.portfolio-thumb').forEach(thumb => {
-    const video = thumb.querySelector('video');
-    if (!video) return;
-    thumb.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-        thumb.classList.add('playing');
-      } else {
-        video.pause();
-        thumb.classList.remove('playing');
-      }
-    });
-    video.addEventListener('ended', () => thumb.classList.remove('playing'));
-  });
-</script>
 </body>
 </html>

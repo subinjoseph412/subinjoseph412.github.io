@@ -19,6 +19,11 @@
       if (page === 'index.html') el.href = '../index.html';
       else el.href = page;
     });
+    document.querySelectorAll('.footer-link').forEach(el => {
+      if (el.href && el.href.includes('pages/contact')) {
+        el.href = 'contact.html';
+      }
+    });
   });
 </script>
 <script src="../js/layout.js"></script>
@@ -163,7 +168,6 @@
       </div>
     </div>
 
-  </div>
 </main>
 
 <script src="../js/main.js"></script>

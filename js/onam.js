@@ -6,6 +6,15 @@
 
 (function () {
 
+  // Only show during Onam season (mid-Aug – mid-Sep window; exact date
+  // shifts year to year on the Malayalam calendar, so this uses a
+  // generous fixed window rather than a hardcoded date)
+  const now = new Date();
+  const month = now.getMonth(); // 0-indexed: 7 = Aug, 8 = Sep
+  const day = now.getDate();
+  const inSeason = (month === 7 && day >= 15) || (month === 8 && day <= 15);
+  if (!inSeason) return;
+
   const PETAL_COLORS = [
     '#a855f7', '#c084fc', '#7c3aed', // theme purples
     '#fbbf24', '#f59e0b',            // marigold/gold accents
