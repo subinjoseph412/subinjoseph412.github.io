@@ -5,6 +5,7 @@
 (function () {
   const TOTAL_STEPS = 6; // 5 question steps + 1 summary
   let currentStep = 0;
+  const EMAIL = atob('c3ViaW5qb3NlcGg0MTJAZ21haWwuY29t');
 
   const answers = {
     type: '',
@@ -120,7 +121,7 @@ From: ${[answers.contact_name, answers.contact_email].filter(Boolean).join(' - '
 
     const subject = encodeURIComponent(`Project Brief — ${answers.type || 'New Project'}`);
     const body = encodeURIComponent(plainText);
-    mailtoBtn.href = `mailto:subinjoseph412@gmail.com?subject=${subject}&body=${body}`;
+    mailtoBtn.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
   }
 
   function escapeHtml(str) {
