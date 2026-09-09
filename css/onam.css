@@ -54,7 +54,7 @@
   transition: opacity 0.3s, transform 0.3s;
   font-size: 13px;
   font-weight: 600;
-  color: #e9d5ff;
+  color: #4a3d6b;
 }
 
 .onam-banner-emoji { font-size: 16px; }
@@ -63,7 +63,7 @@
 #onamBanner button {
   background: none;
   border: none;
-  color: rgba(255,255,255,0.5);
+  color: rgba(26,20,40,0.5);
   font-size: 12px;
   cursor: pointer;
   padding: 2px 4px;
