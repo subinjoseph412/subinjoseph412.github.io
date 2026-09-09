@@ -137,20 +137,6 @@
 </head>
 <body>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.nav-logo').forEach(el => el.href = '../index.html');
-    document.querySelectorAll('.nav-link[data-page], .nav-cta[data-page]').forEach(el => {
-      const page = el.dataset.page;
-      el.href = page === 'index.html' ? '../index.html' : page;
-    });
-    document.querySelectorAll('.footer-link').forEach(el => {
-      if (el.href && el.href.includes('pages/contact')) {
-        el.href = 'contact.html';
-      }
-    });
-  });
-</script>
 <script src="../js/layout.js"></script>
 
 <main class="page-main">
@@ -254,6 +240,7 @@
 </main>
 
 <script src="../js/main.js"></script>
+<script src="../js/chatbot.js"></script>
 <script src="../js/brief.js"></script>
 </body>
 </html>

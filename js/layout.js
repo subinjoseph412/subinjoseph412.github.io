@@ -6,7 +6,8 @@
   // Detect root path prefix for GitHub Pages (subdir) vs local
   const path = window.location.pathname;
   const isRoot = path.endsWith('/') || path.endsWith('index.html') || path === '/';
-  const prefix = ''; // adjust if deploying to a subdirectory
+  const rootPrefix = isRoot ? '' : '../';
+  const pagePrefix = isRoot ? 'pages/' : '';
 
   // ── Navigation ───────────────────────────────────────────
   const navHTML = `
@@ -15,17 +16,17 @@
 
   <nav class="nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="Subin Joseph — Home">
+      <a href="${rootPrefix}index.html" class="nav-logo" aria-label="Subin Joseph — Home">
         <img src="/assets/profile.jpg" alt="Subin Joseph" class="logo-mark" style="object-fit:cover;">
         <span class="logo-name">Subin Joseph</span>
       </a>
 
       <div class="nav-links" role="list">
-        <a href="index.html"        class="nav-link" data-page="index.html"     role="listitem">Home</a>
-        <a href="pages/portfolio.html" class="nav-link" data-page="portfolio.html" role="listitem">Portfolio</a>
-        <a href="pages/photos.html"    class="nav-link" data-page="photos.html"    role="listitem">Photos</a>
-        <a href="pages/services.html"  class="nav-link" data-page="services.html"  role="listitem">Services</a>
-        <a href="pages/about.html"     class="nav-link" data-page="about.html"     role="listitem">About</a>
+        <a href="${rootPrefix}index.html"        class="nav-link" data-page="index.html"     role="listitem">Home</a>
+        <a href="${pagePrefix}portfolio.html" class="nav-link" data-page="portfolio.html" role="listitem">Portfolio</a>
+        <a href="${pagePrefix}photos.html"    class="nav-link" data-page="photos.html"    role="listitem">Photos</a>
+        <a href="${pagePrefix}services.html"  class="nav-link" data-page="services.html"  role="listitem">Services</a>
+        <a href="${pagePrefix}about.html"     class="nav-link" data-page="about.html"     role="listitem">About</a>
         <a href="https://instagram.com/bugwithabackpack" class="nav-social" target="_blank" rel="noopener" aria-label="Instagram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
         </a>
@@ -36,7 +37,7 @@
           <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-    <a href="pages/contact.html"   class="nav-cta"  data-page="contact.html">Let's work together</a>
+    <a href="${pagePrefix}contact.html"   class="nav-cta"  data-page="contact.html">Let's work together</a>
       </div>
 
       <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
@@ -46,11 +47,11 @@
   </nav>
 
   <div class="nav-mobile" id="mobileMenu" role="dialog" aria-label="Mobile menu">
-    <a href="index.html"           class="nav-link" data-page="index.html">Home</a>
-    <a href="pages/portfolio.html" class="nav-link" data-page="portfolio.html">Portfolio</a>
-    <a href="pages/photos.html"    class="nav-link" data-page="photos.html">Photos</a>
-    <a href="pages/services.html"  class="nav-link" data-page="services.html">Services</a>
-    <a href="pages/about.html"     class="nav-link" data-page="about.html">About</a>
+    <a href="${rootPrefix}index.html"           class="nav-link" data-page="index.html">Home</a>
+    <a href="${pagePrefix}portfolio.html" class="nav-link" data-page="portfolio.html">Portfolio</a>
+    <a href="${pagePrefix}photos.html"    class="nav-link" data-page="photos.html">Photos</a>
+    <a href="${pagePrefix}services.html"  class="nav-link" data-page="services.html">Services</a>
+    <a href="${pagePrefix}about.html"     class="nav-link" data-page="about.html">About</a>
     <div class="nav-mobile-social">
       <a href="https://instagram.com/bugwithabackpack" class="nav-social" target="_blank" rel="noopener" aria-label="Instagram">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
@@ -63,7 +64,7 @@
           <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-    <a href="pages/contact.html"   class="nav-cta"  data-page="contact.html">Let's work together</a>
+    <a href="${pagePrefix}contact.html"   class="nav-cta"  data-page="contact.html">Let's work together</a>
   </div>`;
 
   // ── Footer ───────────────────────────────────────────────
@@ -78,7 +79,7 @@
         <div class="footer-links">
           <a href="https://instagram.com/bugwithabackpack" class="footer-link" target="_blank" rel="noopener">Instagram</a>
           <a href="https://linkedin.com/in/subin-joseph-2b9b70258" class="footer-link" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="pages/contact.html" class="footer-link">Contact</a>
+          <a href="${pagePrefix}contact.html" class="footer-link">Contact</a>
         </div>
       </div>
     </div>

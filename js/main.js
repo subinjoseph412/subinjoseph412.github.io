@@ -40,13 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fadeEls.forEach(el => observer.observe(el));
 
-  // Immediately reveal above-fold elements
-  setTimeout(() => {
-    document.querySelectorAll('.hero .fade-in').forEach(el => {
-      el.classList.add('visible');
-    });
-  }, 100);
-
   // ── Portfolio video click-to-play (works on touch + desktop) ──
   document.querySelectorAll('.portfolio-thumb').forEach(thumb => {
     const video = thumb.querySelector('video');

@@ -13,21 +13,6 @@
 </head>
 <body>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.nav-logo').forEach(el => el.href = '../index.html');
-    document.querySelectorAll('.nav-link[data-page], .nav-cta[data-page]').forEach(el => {
-      const page = el.dataset.page;
-      if (page === 'index.html') el.href = '../index.html';
-      else el.href = page;
-    });
-    document.querySelectorAll('.footer-link').forEach(el => {
-      if (el.href && el.href.includes('pages/contact')) {
-        el.href = 'contact.html';
-      }
-    });
-  });
-</script>
 <script src="../js/layout.js"></script>
 
 <main class="page-main">
@@ -57,8 +42,6 @@
             <div class="about-meta-icon">🌍</div>
             Available Worldwide
           </div>
-          
-          
           <div class="about-meta-item">
             <div class="about-meta-icon">📩</div>
             24h response time
@@ -88,10 +71,6 @@
           <p>
             My approach is built on <strong>clear communication</strong> and <strong>affordable, transparent rates</strong>. I take the time to understand your vision before touching the timeline, and I keep you informed throughout the process — no surprises, no guesswork.
           </p>
-          <p>
-            
-          </p>
-        </div>
         </div>
 
         <!-- Strengths -->
@@ -166,6 +145,8 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
+
+      </div>
 
       </div>
     </div>

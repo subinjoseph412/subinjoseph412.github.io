@@ -34,6 +34,11 @@
       letter-spacing: 0.02em;
     }
 
+    [data-theme="light"] .filter-tab {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(124,58,237,0.15);
+    }
+
     .filter-tab:hover {
       color: var(--text);
       background: rgba(255,255,255,0.08);
@@ -88,24 +93,6 @@
 </head>
 <body>
 
-<script>
-  // Fix asset paths for pages/ subdirectory
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.nav-logo').forEach(el => {
-      el.href = '../index.html';
-    });
-    document.querySelectorAll('.nav-link[data-page], .nav-cta[data-page]').forEach(el => {
-      const page = el.dataset.page;
-      if (page === 'index.html') el.href = '../index.html';
-      else el.href = page;
-    });
-    document.querySelectorAll('.footer-link').forEach(el => {
-      if (el.href && el.href.includes('pages/contact')) {
-        el.href = 'contact.html';
-      }
-    });
-  });
-</script>
 <script src="../js/layout.js"></script>
 
 <main class="page-main">
@@ -115,6 +102,12 @@
     <div class="page-hero">
       <div class="section-eyebrow fade-in">My work</div>
       <h1 class="display-lg fade-in fade-in-delay-1">Portfolio</h1>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">All</button>
+      <button class="filter-tab" data-filter="motion">Motion</button>
+      <button class="filter-tab" data-filter="documentary">Documentary</button>
     </div>
 
     <div class="portfolio-grid">
