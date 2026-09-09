@@ -67,11 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.querySelector('.nav');
   if (nav) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        nav.style.background = 'rgba(250,248,252,0.92)';
-      } else {
-        nav.style.background = 'rgba(250,248,252,0.6)';
-      }
+      nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
   }
 
