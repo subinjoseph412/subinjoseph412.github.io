@@ -3,8 +3,6 @@
    Design tokens: dark base, violet accent, liquid glass UI
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
-
 :root {
   /* Palette */
   --bg:          #faf8fc;
@@ -22,8 +20,8 @@
   --glass-border:rgba(124, 58, 237, 0.14);
 
   /* Type */
-  --font-display: 'Syne', sans-serif;
-  --font-body:    'Inter', sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   /* Spacing */
   --nav-h: 72px;
