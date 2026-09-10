@@ -261,6 +261,12 @@ body::before {
   transform: translateY(-1px);
 }
 
+/* Persistent theme toggle next to the hamburger (mobile only —
+   desktop already has one inside .nav-links) */
+.theme-toggle.theme-toggle-bar {
+  display: none;
+}
+
 /* Hamburger */
 .nav-hamburger {
   display: none;
@@ -1210,6 +1216,7 @@ body::before {
 @media (max-width: 768px) {
   .nav-links, .nav-cta, .nav-social { display: none; }
   .nav-hamburger { display: flex; }
+  .theme-toggle.theme-toggle-bar { display: flex; }
   .services-grid { grid-template-columns: 1fr; }
   .portfolio-grid { grid-template-columns: 1fr; }
   .contact-card { padding: 28px; }
