@@ -364,6 +364,28 @@
 
     .hcard-tool-icon { font-size: 14px; }
 
+    /* Live clock card */
+    .hcard-clock {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+    }
+    .hcard-clock-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hcard-clock-val {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+
     /* Status card */
     .hcard-status {
       padding: 20px;
@@ -481,6 +503,14 @@
               <div class="hcard-play-dot"></div>
               <span class="hcard-play-label">PLAYING</span>
             </div>
+          </div>
+
+          <!-- Live local time -->
+          <div class="hcard hcard-clock glass">
+            <span class="hcard-clock-label">
+              <span class="status-dot-green"></span> Local time in Kerala
+            </span>
+            <span class="hcard-clock-val" id="heroLiveTime">--:--</span>
           </div>
 
           <!-- Timeline card — full width -->

@@ -64,4 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // ── Live Kerala (IST) time, homepage hero ────────────────
+  const liveTimeEl = document.getElementById('heroLiveTime');
+  if (liveTimeEl) {
+    const updateKeralaTime = () => {
+      // Date.now() is always true UTC epoch ms, regardless of the
+      // visitor's own timezone. IST is a fixed UTC+5:30, no DST.
+      const istMillis = Date.now() + (5.5 * 60 * 60 * 1000);
+      const istDate = new Date(istMillis);
+      const hh = String(istDate.getUTCHours()).padStart(2, '0');
+      const mm = String(istDate.getUTCMinutes()).padStart(2, '0');
+      liveTimeEl.textContent = `${hh}:${mm}`;
+    };
+    updateKeralaTime();
+    setInterval(updateKeralaTime, 30000);
+  }
+
 });
